@@ -1,0 +1,12 @@
+.react-tooltip-lite {
+    background: #7f7f7f;
+    color: white;
+    border-radius: 4px;
+    padding: 7px;
+    z-index: 2000 !important;
+}
+
+.react-tooltip-lite-arrow {
+    border-color: #7f7f7f;
+    z-index: 2001 !important;
+}

@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import React, {Suspense} from 'react';
+import {Route, Switch} from "react-router-dom";
 import './App.css';
+import HomePage from "./Page/HomePage";
+import FirstPage from "./Page/FirstPage";
+import NotFoundScreen from "./Page/NotFoundPage";
+import LoadingScreen from "./Page/LoadingPage";
+import ResponsiveAppBar from "./Components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<LoadingScreen/>}> 
+      <ResponsiveAppBar />
+      <Switch>
+        <Route path="/" exact component={HomePage}/>
+        <Route path="/dashboard" exact component={FirstPage}/>
+        <Route render={() => <NotFoundScreen/>}/>
+      </Switch>
+    </Suspense>
   );
 }
 
